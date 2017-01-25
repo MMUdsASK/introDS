@@ -1,0 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Jan 25 13:50:03 2017
+
+@author: admin
+"""
+
+import pandas as pd
+
+data = pd.read_csv('LoansTrainingSet.csv')
