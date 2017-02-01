@@ -13,6 +13,12 @@ datacols = pd.Series(data.columns.values)
 # DATA CLEANING PHASE
 
 # DUPLICATE DETECTED
+dataDuplicate = data[data.duplicated(keep=False)]
+
+# learnt that the duplicated records have the same exact attributes
+del dataDuplicate
+
+# drop the duplicates
 data = data.drop_duplicates(subset="Loan ID")
 
 # FOUND NON-COMPLLIANT CREDIT SCORE
@@ -47,24 +53,18 @@ data['Loan Status'].value_counts().plot(kind='bar')
 # DATA ANALYSIS PHASE
 # credit score, group by loan status
 data.groupby('Loan Status').hist(column='Credit Score')
-data.hist(column='Credit Score')
-
-
-
-data[data['Bankruptcies'] > 1].groupby('Loan Status').hist(column='Bankruptcies')
-
-
-
-
-
-
-# AND GET THE CLASS DISTRIBUTION
 
 # GET DISTINCT VALUES OF MANY COLUMNS:
-# TERM
+colnames = list(data.columns.values)
+
 # YEARS IN CURRENT JOB
+jobyears = list(data['Years in current job'].unique())
 # HOME OWNERSHIP
+home = list(data['Home Ownership'].unique())
 # PURPOSE
+purpose = list(data['Purpose'].unique())
+
+
 
 # MAXIMUM OPEN CREDIT HAS DATATYPE PROBLEM
 
