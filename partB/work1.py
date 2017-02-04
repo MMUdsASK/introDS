@@ -200,11 +200,13 @@ from sklearn.tree import DecisionTreeClassifier, export_graphviz
 from sklearn import preprocessing
 from sklearn.metrics import confusion_matrix
 from sklearn.cross_validation import train_test_split
+import itertools
+
 
 dataT = pd.DataFrame()
 # class attribute
 dataT['Loan Status'] = data['Loan Status']
-dataT['Loan Status'] = preprocessing.LabelEncoder().fit_transform(dataT['Loan Status'])
+dataT['Loan StatusB'] = preprocessing.LabelEncoder().fit_transform(dataT['Loan Status'])
 
 # categorical attributes
 ct = pd.get_dummies(data['Purpose'])
@@ -252,14 +254,8 @@ plt.title('Feature Importance')
 
 export_graphviz(dt,out_file='output1.dot',feature_names=dataT.columns)
 
-confusion_matrix(dataT['Loan Status'], dt.predict(dataT['Loan Status']))
-
-
-
-
-
-
-
+cnf_matrix = confusion_matrix(test['Loan Status'], dt.predict(test.ix[:,1:]))
+sns.heatmap(cnf_matrix, annot=True,  fmt='');
 
 
 
