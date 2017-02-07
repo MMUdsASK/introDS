@@ -1,13 +1,9 @@
 
 """
 TDS2101 - INTRODUCTION TO DATA SCIENCE
+ASSIGNMENT B
 
 work.py - file to process the dataset
-
-LEADER NAME : DARREL SHAKRI BIN AHMAD SHAKRI ( 1141327906 )
-
-
-
 """
 
 import pandas as pd
@@ -146,6 +142,12 @@ sns.boxplot(y="Credit Score", x="Loan Status", data=data);
 
 # mapping home ownership
 sns.countplot(x="Home Ownership", data=data, hue = "Loan Status", palette="Greens_d");
+
+# mapping purpose
+fig, ax = plt.subplots()
+# the size of A4 paper
+fig.set_size_inches(25,15)
+sns.countplot(ax=ax,x="Purpose", data=data, hue = "Loan Status", palette="Greens_d");
 
 
 # HOME OWNERSHIP
